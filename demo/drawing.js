@@ -102,6 +102,8 @@ function setupCanvasForDrawing(container) {
 
     function beginStroke(event) {
         pointerIsDown = true;
+        if (document.activeElement === colorPicker)
+            colorPicker.blur();
         paths.push(new Path());
     }
 

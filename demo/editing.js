@@ -16,14 +16,10 @@ function insertContentAtSelection(contentToInsert, undoLabel) {
         undo: () => {
             const rangeToUndo = rangeFromContent(contentToInsert);
             replaceWithContent(rangeToUndo, originalContent);
-            getSelection().removeAllRanges();
-            getSelection().addRange(rangeFromContent(originalContent) || originalRange);
         },
         redo: () => {
             const rangeToRedo = rangeFromContent(originalContent) || originalRange;
             replaceWithContent(rangeToRedo, contentToInsert);
-            getSelection().removeAllRanges();
-            getSelection().addRange(rangeFromContent(contentToInsert));
         }
     }));
 }
